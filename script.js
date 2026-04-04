@@ -81,16 +81,17 @@ else if (analysis.result === "Suspicious") barColor = "orange";
         <div style="background:#1e293b; height:10px; border-radius:5px;">
           <div style="width:${percentage}%; background:${barColor}; height:10px; border-radius:5px;"></div>
         </div>
-        <p>Risk Score: ${percentage}%</p>
+        <p><b>Risk Score:</b> ${percentage}%</p>
       </div>
     `;
-
+output += "<br>";
     // 📦 STEP 4: Reasons
     if (analysis.reasons.length > 0) {
       output += "<h4>🔍 Reasons:</h4><ul>";
       analysis.reasons.forEach(r => {
-        output += `<li>${r}</li>`;
-      });
+  output += `<li>⚠️ ${r}</li>`;
+});
+     
       output += "</ul>";
     }
 
@@ -98,8 +99,8 @@ else if (analysis.result === "Suspicious") barColor = "orange";
     if (laws.length > 0) {
       output += "<h4>⚖️ Applicable Laws:</h4><ul>";
       laws.forEach(l => {
-        output += `<li>${l}</li>`;
-      });
+  output += `<li>⚖️ ${l}</li>`;
+});
       output += "</ul>";
     }
 
