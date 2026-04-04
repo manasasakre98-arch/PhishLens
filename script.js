@@ -47,7 +47,13 @@ function checkPhishing() {
   const analysis = analyzeInput(input);
   const laws = getLegalInfo(analysis.result);
 
-  let output = `<h2>${analysis.result}</h2>`;
+  let color = "white";
+
+if (analysis.result === "Phishing") color = "red";
+else if (analysis.result === "Suspicious") color = "orange";
+else color = "lightgreen";
+
+let output = `<h2 style="color:${color}">${analysis.result}</h2>`;
 
   if (analysis.reasons.length > 0) {
     output += "<p><b>Reasons:</b></p><ul>";
