@@ -115,9 +115,9 @@ npx live-server
 
 | View | Preview |
 |---|---|
-| 🏠 Home / Input Screen | ![Home](screenshots/home.png) |
-| 🚨 Phishing Detected | ![Phishing](screenshots/phishing-result.png) |
-| ✅ Safe Result | ![Safe](screenshots/safe-result.png) |
+| 🏠 Home / Input Screen | ![Home](screenshots/homepage.png) |
+| 🚨 Phishing Detected | ![Phishing](screenshots/suspicious.png) |
+| ✅ Safe Result | ![Safe](screenshots/safe.png) |
 | ⚖️ Legal Awareness Panel | ![Legal](screenshots/legal-panel.png) |
 
 ---
