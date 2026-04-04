@@ -44,32 +44,67 @@ function getLegalInfo(result) {
 function checkPhishing() {
   const input = document.getElementById("inputBox").value;
 
-  const analysis = analyzeInput(input);
-  const laws = getLegalInfo(analysis.result);
+  // ⏳ STEP 1: Show loading
+  document.getElementById("result").innerHTML = "⏳ Scanning...";
 
-  let color = "white";
+  // ⏱️ STEP 2: Delay (fake processing)
+  setTimeout(() => {
 
-if (analysis.result === "Phishing") color = "red";
-else if (analysis.result === "Suspicious") color = "orange";
-else color = "lightgreen";
+    const analysis = analyzeInput(input);
+    const laws = getLegalInfo(analysis.result);
 
-let output = `<h2 style="color:${color}">${analysis.result}</h2>`;
+    // 🎨 Color logic
+    let color = "white";
 
-  if (analysis.reasons.length > 0) {
-    output += "<p><b>Reasons:</b></p><ul>";
-    analysis.reasons.forEach(r => {
-      output += `<li>${r}</li>`;
-    });
-    output += "</ul>";
-  }
+    if (analysis.result === "Phishing") color = "red";
+    else if (analysis.result === "Suspicious") color = "orange";
+    else color = "lightgreen";
 
-  if (laws.length > 0) {
-    output += "<p><b>⚖️ Laws:</b></p><ul>";
-    laws.forEach(l => {
-      output += `<li>${l}</li>`;
-    });
-    output += "</ul>";
-  }
+   let icon = "✅";
 
-  document.getElementById("result").innerHTML = output;
+if (analysis.result === "Phishing") icon = "🚨";
+else if (analysis.result === "Suspicious") icon = "⚠️";
+
+let output = `<h2 style="color:${color}">${icon} ${analysis.result}</h2>`;
+
+    output += "<hr style='border:0.5px solid #1e293b; margin:15px 0;'>";
+
+    // 📊 STEP 3: Risk meter
+    let percentage = analysis.score * 30;
+    let barColor = "green";
+
+if (analysis.result === "Phishing") barColor = "red";
+else if (analysis.result === "Suspicious") barColor = "orange";
+
+    output += `
+      <div style="margin-top:10px;">
+        <div style="background:#1e293b; height:10px; border-radius:5px;">
+          <div style="width:${percentage}%; background:${barColor}; height:10px; border-radius:5px;"></div>
+        </div>
+        <p>Risk Score: ${percentage}%</p>
+      </div>
+    `;
+
+    // 📦 STEP 4: Reasons
+    if (analysis.reasons.length > 0) {
+      output += "<h4>🔍 Reasons:</h4><ul>";
+      analysis.reasons.forEach(r => {
+        output += `<li>${r}</li>`;
+      });
+      output += "</ul>";
+    }
+
+    // ⚖️ STEP 5: Laws
+    if (laws.length > 0) {
+      output += "<h4>⚖️ Applicable Laws:</h4><ul>";
+      laws.forEach(l => {
+        output += `<li>${l}</li>`;
+      });
+      output += "</ul>";
+    }
+
+    // ✅ FINAL: Show result
+    document.getElementById("result").innerHTML = output;
+
+  }, 1000); // 1 second delay
 }
