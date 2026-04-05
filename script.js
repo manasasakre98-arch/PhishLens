@@ -30,82 +30,74 @@ function analyzeInput(input) {
   return { result, reasons };
 }
 
-function getLegalInfo(result) {
-  if (result === "Phishing") {
-    return [
-      "Section 66C - Identity Theft",
-      "Section 66D - Cheating by Personation",
-      "IPC 420 - Cheating"
-    ];
-  }
-  return [];
-}
 
-function checkPhishing() {
+async function checkPhishing() {
   const input = document.getElementById("inputBox").value;
 
-  // ⏳ STEP 1: Show loading
   document.getElementById("result").innerHTML = "⏳ Scanning...";
 
-  // ⏱️ STEP 2: Delay (fake processing)
-  setTimeout(() => {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ input: input })
+    });
 
+    const data = await response.json();
+
+    let color = "lightgreen";
+    let icon = "✅";
+
+    if (data.result === "Phishing") {
+      color = "red";
+      icon = "🚨";
+    }
+
+    let output = `<h2 style="color:${color}">${icon} ${data.result}</h2>`;
+
+    // ✅ ADD REASONS (from your old logic)
     const analysis = analyzeInput(input);
-    const laws = getLegalInfo(analysis.result);
 
-    // 🎨 Color logic
-    let color = "white";
-
-    if (analysis.result === "Phishing") color = "red";
-    else if (analysis.result === "Suspicious") color = "orange";
-    else color = "lightgreen";
-
-   let icon = "✅";
-
-if (analysis.result === "Phishing") icon = "🚨";
-else if (analysis.result === "Suspicious") icon = "⚠️";
-
-let output = `<h2 style="color:${color}">${icon} ${analysis.result}</h2>`;
-
-    output += "<hr style='border:0.5px solid #1e293b; margin:15px 0;'>";
-
-    // 📊 STEP 3: Risk meter
-    let percentage = analysis.score * 30;
-    let barColor = "green";
-
-if (analysis.result === "Phishing") barColor = "red";
-else if (analysis.result === "Suspicious") barColor = "orange";
-
-    output += `
-      <div style="margin-top:10px;">
-        <div style="background:#1e293b; height:10px; border-radius:5px;">
-          <div style="width:${percentage}%; background:${barColor}; height:10px; border-radius:5px;"></div>
-        </div>
-        <p><b>Risk Score:</b> ${percentage}%</p>
-      </div>
-    `;
-output += "<br>";
-    // 📦 STEP 4: Reasons
     if (analysis.reasons.length > 0) {
       output += "<h4>🔍 Reasons:</h4><ul>";
       analysis.reasons.forEach(r => {
-  output += `<li>⚠️ ${r}</li>`;
-});
-     
+        output += `<li>⚠️ ${r}</li>`;
+      });
       output += "</ul>";
     }
 
-    // ⚖️ STEP 5: Laws
+    // ✅ ADD LAWS
+    const laws = getLegalInfo(data.result);
+
     if (laws.length > 0) {
-      output += "<h4>⚖️ Applicable Laws:</h4><ul>";
+      output += "<hr style='border:0.5px solid #1e293b; margin:15px 0;'>";
+
+      output += "<h4>⚖️ Legal Implications:</h4><ul>";
+
       laws.forEach(l => {
-  output += `<li>⚖️ ${l}</li>`;
-});
+        output += `<li>⚖️ ${l}</li>`;
+      });
+
       output += "</ul>";
     }
 
-    // ✅ FINAL: Show result
     document.getElementById("result").innerHTML = output;
 
-  }, 1000); // 1 second delay
+  } catch (error) {
+    document.getElementById("result").innerHTML =
+      "❌ Error connecting to ML model";
+  }
+}
+
+function getLegalInfo(result) {
+  if (result === "Phishing") {
+    return [
+      "IT Act Section 66D – Cheating by personation using computer",
+      "IT Act Section 66C – Identity Theft",
+      "IPC Section 420 – Cheating"
+    ];
+  }
+  return [];
 }
