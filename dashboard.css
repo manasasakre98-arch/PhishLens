@@ -1,0 +1,89 @@
+/* 🌌 Body */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 📦 Container */
+.container {
+  text-align: center;
+  margin-top: 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔵 Title */
+.title {
+  font-size: 3rem;
+  color: #38bdf8;
+  text-shadow: 0 0 20px #38bdf8;
+}
+
+/* 💬 Welcome Text */
+.welcome {
+  margin-top: 30px;
+  color: #94a3b8;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 🔘 Button */
+button {
+  margin-top: 40px;
+  padding: 14px 25px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #38bdf8;
+}
+
+/* ✨ Stars container */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* ✨ Individual stars */
+.star {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  opacity: 0.6;
+  animation: twinkle 3s infinite ease-in-out alternate;
+}
+
+/* ⭐ Star positions (few only, aesthetic) */
+.star:nth-child(1) { top: 10%; left: 20%; }
+.star:nth-child(2) { top: 25%; left: 75%; }
+.star:nth-child(3) { top: 60%; left: 40%; }
+.star:nth-child(4) { top: 80%; left: 80%; }
+.star:nth-child(5) { top: 50%; left: 10%; }
+
+/* ✨ Twinkle animation */
+@keyframes twinkle {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
