@@ -113,18 +113,25 @@ npx live-server
 
 > *Screenshots will be added as the UI is finalized.*
 
-### 🏠 Home / Input Screen
-![Home](screenshots/home.png)
+### 🏠 Home Screen
+<p align="center">
+  <img src="screenshots/home.png" width="600">
+</p>
 
-### 🚨 Phishing Detected
-![Phishing](screenshots/phishing.png)
+### 🚨 Phishing Detection
+<p align="center">
+  <img src="screenshots/phishing.png" width="600">
+</p>
 
 ### ✅ Safe Result
-![Safe](screenshots/safe.png)
+<p align="center">
+  <img src="screenshots/safe.png" width="600">
+</p>
 
 ### ✨ Dashboard
-![Dashboard](screenshots/dashboard.png)
-
+<p align="center">
+  <img src="screenshots/dashboard.png" width="600">
+</p>
 ---
 
 ## 🔮 Future Improvements
