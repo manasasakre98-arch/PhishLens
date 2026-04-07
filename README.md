@@ -113,12 +113,17 @@ npx live-server
 
 > *Screenshots will be added as the UI is finalized.*
 
-| View | Preview |
-|---|---|
-| 🏠 Home / Input Screen | ![Home](screenshots/home.png) |
-| 🚨 Phishing Detected | ![Phishing](screenshots/phishing.png) |
-| ✅ Safe Result | ![Safe](screenshots/safe.png)
-| ✨ Dashboard | ![Dashboard](screenshots/dashboard.png) |
+### 🏠 Home / Input Screen
+![Home](screenshots/home.png)
+
+### 🚨 Phishing Detected
+![Phishing](screenshots/phishing.png)
+
+### ✅ Safe Result
+![Safe](screenshots/safe.png)
+
+### ✨ Dashboard
+![Dashboard](screenshots/dashboard.png)
 
 ---
 
