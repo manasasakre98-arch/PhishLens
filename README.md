@@ -2,7 +2,7 @@
 
 # 🎣 PhishLens — ML-Based Phishing Detection System
 
-> **AI-Powered Phishing Detection with Legal Awareness** — *See through the scam before it hooks you.*
+> **ML-based Phishing Detection with Legal Awareness** — *See through the scam before it hooks you.*
 
 
 
@@ -10,7 +10,7 @@
 
 ## 📌 Overview
 
-**PhishLens** is a web-based AI-powered application that detects phishing messages, emails, and links — instantly and clearly.
+**PhishLens** is a web-based Ml- based application that detects phishing messages, emails, and links — instantly and clearly.
 
 What makes PhishLens different is that it doesn't just *detect* threats. It also **educates users about the cybercrime laws** that apply to what was found — mapping threats to real Indian legal sections like the **IT Act, 2000** and the **IPC (Indian Penal Code)**. This bridges the gap between cybersecurity awareness and legal literacy, a combination rarely found in phishing detection tools.
 
