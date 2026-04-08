@@ -1,6 +1,6 @@
 
 
-# 🎣 PhishLens
+# 🎣 PhishLens — ML-Based Phishing Detection System
 
 > **AI-Powered Phishing Detection with Legal Awareness** — *See through the scam before it hooks you.*
 
